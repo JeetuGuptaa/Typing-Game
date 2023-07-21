@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/game.css">
+    <title>Typing Game</title>
+</head>
+<body>
+    <section id = "content" style ="display: flex;">
+        <section id = "progress" class = "container">
+            <div>
+                <div>Accuracy</div>
+                <div id = "Accuracy">100%</div>
+            </div>
+            <div>
+                <div>Time</div>
+                <div id = "time">0</div>
+            </div>
+            <div>
+                <div>Speed</div>
+                <div id = "word">0 WPS</div>
+            </div>
+        </section>
+
+        <section id = "main" class = "container">
+            <div id = "displayed-text">
+            </div>
+            <textarea id="typingProgress" cols="30" rows="10" autofocus></textarea>
+        </section>
+
+        <input type = "hidden" value = "<%= locals.paragraph %>" id = "textContainer">
+        <button type = 'submit' id = "end-game">End</button>
+    </section>
+
+<section id="gameResultSection" class="container" style = "display: none;">
+    <h2>Game Results</h2>
+    <p> Accuracy : <span id="resultAccuracy">100%</span></p>
+    <p>Time : <span id="resultTime">0</span></p>
+    <p>Speed : <span id="resultSpeed">0</span></p>
+    <a href = '/' id = "button">New Game</a>
+</section>
+
+    <script src = "/js/game.js"></script>
+</body>
+</html>

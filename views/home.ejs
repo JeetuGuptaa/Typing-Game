@@ -4,11 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Typing Home</title>
+    <link rel="stylesheet" href="/css/home.css"> <!-- Replace "/path/to/form.css" with the actual path to your form.css file -->
 </head>
 <body>
-    <h1>Select Difficulty</h1>
-    <h3>Easy</h3>
-    <h3>Medium</h3>
-    <h3>Hard</h3>
+    <form action = "/game" id="gameForm" class="container" method="post">
+        <label for="mode">Select Mode:</label>
+        <select name="mode" id="mode">
+            <option value="single">Solo</option>
+            <option value="multi">MultiPlayer</option>
+        </select>
+        <label for="difficulty">Select Difficulty:</label>
+        <select name="difficulty" id="difficulty">
+            <option value="easy">Easy</option>
+            <option value="medium">Medium</option>
+            <option value="hard">Hard</option>
+        </select>
+        <button type="submit">Start Game</button>
+    </form>
+
+    
 </body>
 </html>
