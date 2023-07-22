@@ -31,7 +31,7 @@
   .container {
     border: 2px solid white;
     border-radius: 10px;
-    width: 90%;
+    width: 70%;
     max-width: 700px;
     background: #2C3E50; 
     background: -webkit-linear-gradient(to right, #4CA1AF, #2C3E50);  
@@ -157,4 +157,15 @@
 
 #button:hover {
   background-color: #2193b0;
+}
+
+
+#player1{
+  position: absolute;
+  left : 2rem;
+}
+
+#player2{
+  position: absolute;
+  right : 2rem;
 }

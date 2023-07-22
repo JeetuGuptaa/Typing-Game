@@ -1,9 +1,22 @@
 const express = require('express');
 const router = express.Router();
+const {nanoid} = require('nanoid');
 const singleController = require('../controller/singleController');
 
 router.get('/', (req, res) => {
-    res.render('home');
+    if(req.query.name){
+        res.render('home', {
+            uID : req.query.uID,
+            name : req.query.name
+        })
+    }else{
+        const uID = nanoid(8);
+        req.uID = uID;
+        res.render('home',
+        {
+            uID : uID
+        });
+    }
 })
 
 router.post('/game', singleController.sendText);

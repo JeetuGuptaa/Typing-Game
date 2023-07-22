@@ -7,7 +7,16 @@
     <link rel="stylesheet" href="/css/home.css"> <!-- Replace "/path/to/form.css" with the actual path to your form.css file -->
 </head>
 <body>
+
+    <p id = "hi">
+        <% if(locals.name){ %>
+            Hi, <%= locals.name %>
+        <% } %>
+    </p>
+
     <form action = "/game" id="gameForm" class="container" method="post">
+        <input type="hidden" name = "uID" value = "<%= locals.uID %>">
+        <input type="hidden" name = "name" id = "userName" value = "<% if(locals.name){%><%= locals.name%><% } %>">
         <label for="mode">Select Mode:</label>
         <select name="mode" id="mode">
             <option value="single">Solo</option>
@@ -22,6 +31,14 @@
         <button type="submit">Start Game</button>
     </form>
 
-    
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <p>Please enter your name:</p>
+            <input type="text" id="nameInput" value = "Guest">
+            <button id="submitName">Submit</button>
+        </div>
+    </div>
+  
+    <script src = "/js/home.js"></script>
 </body>
 </html>

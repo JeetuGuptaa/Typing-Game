@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/game.css">
+    <title>Typing Game</title>
+</head>
+<body>
+    <div id = "player1">
+        <p>Player1 : <span id = "player1_name"></p>
+        <p>Accuracy : <span id = "player1_accuracy">100</span>%</p>
+        <p>Speed : <span id = "player1_speed">0</span>WPM</p>
+        <p>Completed : <span id = "player1_completed">0</span>%</p>
+    </div>
+    <div id = "player2">
+    <p>Player2 : <span id = "player2_name"></p>
+        <p>Accuracy : <span id = "player2_accuracy">100</span>%</p>
+        <p>Speed : <span id = "player2_speed">0</span>WPM</p>
+        <p>Completed : <span id = "player2_completed">0</span>%</p>
+    </div>
+    <section id = "content" style ="display: flex;">
+        <section id = "progress" class = "container">
+            <div>
+                <div>Accuracy</div>
+                <div id = "Accuracy">100%</div>
+            </div>
+            <div>
+                <div>Time</div>
+                <div id = "time">120</div>
+            </div>
+            <div>
+                <div>Speed</div>
+                <div id = "word">0 WPS</div>
+            </div>
+        </section>
+
+        <section id = "main" class = "container">
+            <div id = "displayed-text">
+            </div>
+            <textarea id="typingProgress" cols="30" rows="10" autofocus></textarea>
+        </section>
+
+        <button type = 'submit' id = "end-game">End</button>
+    </section>
+
+    <section id="gameResultSection" class="container" style = "display: none;">
+        <h2>Game Results</h2>
+        <p> Accuracy : <span id="resultAccuracy">100%</span></p>
+        <p>Time : <span id="resultTime">0</span></p>
+        <p>Speed : <span id="resultSpeed">0</span></p>
+        <a href = '/?name=<%=locals.name%>&uID=<%= locals.uID%>' id = "button">New Game</a>
+    </section>
+
+    <input type="hidden" name = "name" id = "name" value = "<%= locals.name %>">
+    <input type="hidden" name = "uID" id = "uID" value = "<%= locals.uID%>">
+    <input type="hidden" name = "difficulty" id = "difficulty" value = "<%= locals.difficulty%>">
+
+
+    <script src = '/js/socket.io.js'></script>
+    <script src = '/js/multiGame.js'></script>
+</body>
+</html>

@@ -10,12 +10,12 @@ const finish = (message)=>{
     document.getElementById('gameResultSection').style.display = 'block';
 
     document.getElementById('resultAccuracy').innerText = Accuracy.innerText;
-    if(Time.innerText === '120'){
+    if(Time.innerText === '0'){
         document.getElementById('resultTime').innerText = "Time Exceeded";
     }else if(message == "Not Completed"){
         document.getElementById('resultTime').innerText = message;
     }else{
-        document.getElementById('resultTime').innerText = Time.innerText + " seconds";
+        document.getElementById('resultTime').innerText = 120 - parseInt(Time.innerText) + " seconds";
     }
     document.getElementById('resultSpeed').innerText = Word.innerText;
 }
@@ -24,6 +24,13 @@ let incorrect = 0;
 let word = 0;
 let prevIncorrect = 0;
 let timeTaken = 0;
+
+inputElement.addEventListener('keydown', (event) => {
+    const key = event.key; 
+    if (key === 'Backspace') {
+      event.preventDefault(); 
+    }
+});
 
 inputElement.addEventListener('input', (event)=>{
     incorrect = 0;
@@ -69,7 +76,8 @@ inputElement.addEventListener('input', (event)=>{
     if(timeTaken == 0) Word.innerText = `0WPM`;
     else Word.innerText = `${Math.floor((word * 60)/timeTaken)}WPM`;
 
-    if(displaySpans.length === typedValue.length){
+    if(inputText.length === typedValue.length){
+        clearInterval(id);
         finish();
     }
    
@@ -97,18 +105,19 @@ document.addEventListener('selectstart', (event) => {
 });
 
 const time = Date.now();
-let id = setInterval(()=>{
+var id = setInterval(()=>{
     const curTime = Date.now();
     timeTaken = Math.floor((curTime - time)/1000);
     if(timeTaken >= 120){
         clearInterval(id);
-        Time.innerText = timeTaken;
+        Time.innerText = 120 - timeTaken;
         finish();
     }
-    Time.innerText = timeTaken;
+    Time.innerText = 120 - timeTaken;
 }, 1000);
 
 const submitBtn = document.getElementById('end-game');
 submitBtn.addEventListener('click', ()=>{
+    clearInterval(id);
     finish("Not Completed");
 });
